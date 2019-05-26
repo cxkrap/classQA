@@ -20,13 +20,13 @@
 
         </activity>
         <activity android:name=".CourseQuesActivity">
-
+            android:windowSoftInputMode="adjustResize"
         </activity>
         <activity android:name=".QAActivity">
-
+            android:windowSoftInputMode="adjustResize"
         </activity>
         <activity android:name=".AddCourseActivity">
-
+            android:windowSoftInputMode="adjustResize"
         </activity>
     </application>
 

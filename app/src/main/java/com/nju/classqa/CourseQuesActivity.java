@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nju.classqa.util.HttpUtil;
@@ -30,17 +31,21 @@ import okhttp3.Response;
 public class CourseQuesActivity extends Activity {
     private List<Question> questionList=new ArrayList<>();
     private Button sendQuestion;
+    private TextView aimed_Course;
     private RecyclerView questionRecyclerView;
     private QuestionAdapter adapter;
     private EditText inputText;
     private int courseId;
-
+    private String courseName;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questionlist);
         Intent inintent=getIntent();
         courseId=inintent.getIntExtra("courseId",0);
+        courseName=inintent.getStringExtra("courseName");
+        aimed_Course=(TextView)findViewById(R.id.aimed_course);
+        aimed_Course.setText("Course： "+courseName);
         initQuestion();
         sendQuestion=(Button)findViewById(R.id.send_question);
         inputText=(EditText)findViewById(R.id.input_question);
@@ -55,7 +60,14 @@ public class CourseQuesActivity extends Activity {
                 //Todo
                 String content=inputText.getText().toString();
                 if(!content.equals("")){
-                    Question question = addQuestion(Integer.parseInt(User.getUniquePsuedoID()), content, courseId);
+                    Question question;
+                    question=new Question();
+                    question.setContent(content);
+                    try{
+                        question= addQuestion(Integer.parseInt(User.getUniquePsuedoID()), content, courseId);
+                    }catch (Exception e){
+
+                    }
                     questionList.add(0,question);
                     adapter.notifyItemInserted(0);
                     questionRecyclerView.scrollToPosition(0);
@@ -66,7 +78,28 @@ public class CourseQuesActivity extends Activity {
     }
 
     private void initQuestion(){
-        questionList = getQuestionListByCourseId(courseId);
+        try{
+            questionList = getQuestionListByCourseId(courseId);
+        }catch (Exception e){
+
+        }
+
+        if(questionList.size()>0)
+            return;
+        Question question=new Question();
+        question.setContent("时间短：比如这次的 Hackathon 就只有 36 小时，除去吃饭和休息，留给大家开发的时间已经不多了。\n" +
+                "强度高：开发过程中可能遇到各种各样的问题，这些问题都需要在短时间内快速解决，甚至还可能需要现学一门新技术新语言。总之，从 0 开始创造一个产品，时间短任务重，体力和脑力都需要爆发。\n");
+        questionList.add(question);
+        questionList.add(question);
+        questionList.add(question);
+        questionList.add(question);
+        questionList.add(question);
+        questionList.add(question);
+        questionList.add(question);
+        questionList.add(question);
+
+
+
     }
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");

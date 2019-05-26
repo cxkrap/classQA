@@ -52,6 +52,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
                 holder.uncheckNum.setText("");
                 Intent intent=new Intent(parent.getContext(),CourseQuesActivity.class);
                 intent.putExtra("identity",identity);
+                intent.putExtra("courseName",course.getName());
                 intent.putExtra("courseId",course.getId());
                 parent.getContext().startActivity(intent);
             }
@@ -71,7 +72,8 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
         Course course= courseList.get(position);
         holder.courseName.setText(course.getName());
         holder.courseTeacher.setText(course.getTeacher());
-        holder.uncheckNum.setText(course.getNum()+"");
+        if(course.getNum()!=0)
+            holder.uncheckNum.setText(course.getNum()+"");
     }
 
     @Override
