@@ -32,6 +32,23 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
         holder.answerContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int position=holder.getAdapterPosition();
+                Answer answer=answerList.get(position);
+                //Todo
+            }
+        });
+        holder.answerNum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Todo
+                int position=holder.getAdapterPosition();
+                Answer answer=answerList.get(position);
+                if(!answer.getHasAddNum()){
+                    answer.addNum();
+                    holder.answerNum.setText(answer.getNum()+"人认可");
+                    holder.answerNum.setTextColor(R.color.colorPrimaryDark);
+                    answer.setHasAddNum(true);
+                }
 
             }
         });
@@ -42,7 +59,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
     public void onBindViewHolder(AnswerAdapter.ViewHolder holder, int position){
         Answer answer= answerList.get(position);
         holder.answerContent.setText(answer.getContent());
-        holder.answerNum.setText(answer.getNum()+"");
+        holder.answerNum.setText(answer.getNum()+"人认可");
     }
 
     @Override

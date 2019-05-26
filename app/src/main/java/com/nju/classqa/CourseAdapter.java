@@ -7,43 +7,58 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
-
 import java.util.List;
 
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder>{
 
     private List<Course> courseList;
-    private DialogListStyle style;
-    void setStyle(DialogListStyle dialogStyle) {
-        this.style = dialogStyle;
-    }
+    private int identity;
+
     static class ViewHolder extends RecyclerView.ViewHolder{
-        TextView course;
-        TextView courseteacher;
+        TextView courseName;
+        TextView courseTeacher;
+        TextView uncheckNum;
         public ViewHolder(View view){
             super(view);
-            course=(TextView)view.findViewById(R.id.course);
-            courseteacher=(TextView)view.findViewById(R.id.course_teacher);
+            courseName=(TextView)view.findViewById(R.id.course_name);
+            courseTeacher =(TextView)view.findViewById(R.id.course_teacher);
+            uncheckNum=(TextView)view.findViewById(R.id.uncheck_num);
         }
     }
 
-    public CourseAdapter(List<Course> courseList){
+    public CourseAdapter(List<Course> courseList, int identity){
         this.courseList =courseList;
+        this.identity=identity;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType){
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.course_item,parent,false);
         final ViewHolder holder=new ViewHolder(view);
-        holder.course.setOnClickListener(new View.OnClickListener() {
+        if(identity==0){
+            holder.courseTeacher.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.courseTeacher.setVisibility(View.GONE);
+        }
+        holder.courseName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int position=holder.getAdapterPosition();
                 Course course=courseList.get(position);
+                holder.uncheckNum.setText("");
                 Intent intent=new Intent(parent.getContext(),CourseQuesActivity.class);
+                intent.putExtra("identity",identity);
+                intent.putExtra("courseId",course.getId());
                 parent.getContext().startActivity(intent);
+            }
+        });
+        holder.uncheckNum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Todo
+                holder.uncheckNum.setText("");
             }
         });
         return holder;
@@ -52,8 +67,9 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder,int position){
         Course course= courseList.get(position);
-        holder.course.setText(course.getName());
-        holder.courseteacher.setText(course.getTeacher());
+        holder.courseName.setText(course.getName());
+        holder.courseTeacher.setText(course.getTeacher());
+        holder.uncheckNum.setText(course.getNum()+"");
     }
 
     @Override

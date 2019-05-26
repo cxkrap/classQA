@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent();
+                intent.putExtra("identity",0);//学生身份属性为0
                 intent.setClass(MainActivity.this,CourseListActivity.class);
                 startActivityForResult(intent,0);
             }
@@ -27,6 +28,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent();
+                intent.putExtra("identity",1);//教师身份属性为1
                 intent.setClass(MainActivity.this,CourseListActivity.class);
                 startActivityForResult(intent,1);
             }
