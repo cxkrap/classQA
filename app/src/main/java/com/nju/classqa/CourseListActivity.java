@@ -33,6 +33,7 @@ public class CourseListActivity extends Activity  {
         courseRecyclerView.setLayoutManager(layoutManager);
         adapter=new CourseAdapter(courseList,identity);
         courseRecyclerView.setAdapter(adapter);
+
         addCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
