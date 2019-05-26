@@ -8,48 +8,22 @@ import java.net.URL;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 
 public class HttpUtil {
-//    public static void sendHttpRequest(final String address,final HttpCalbackListener listener) {
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                HttpURLConnection connection = null;
-//                try {
-//                    URL url = new URL(address);
-//                    connection = (HttpURLConnection) url.openConnection();
-//                    connection.setRequestMethod("GET");
-//                    connection.setConnectTimeout(8000);
-//                    connection.setReadTimeout(8000);
-//                    connection.setDoInput(true);
-//                    connection.setDoOutput(true);
-//                    InputStream in = connection.getInputStream();
-//                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-//                    StringBuilder response = new StringBuilder();
-//                    String line;
-//                    while ((line = reader.readLine()) != null) {
-//                        response.append(line);
-//                    }
-//                    if (listener != null) {
-//                        listener.onFinish(response.toString());
-//                    }
-//                } catch (Exception e) {
-//                    if (listener != null) {
-//                        listener.onError(e);
-//                    }
-//                } finally {
-//                    if (connection != null) {
-//                        connection.disconnect();
-//                    }
-//                }
-//
-//            }
-//        } ).start();
-//    }
 
+    //使用GET方法获得服务器上数据
     public static void sendOkHttpRequest(String address,okhttp3.Callback callback){
         OkHttpClient client=new OkHttpClient();
         Request request=new Request.Builder().url(address).build();
         client.newCall(request).enqueue(callback);
     }
+
+    //使用POST方法向服务器上提交数据并获取返回提示数据
+    public static void sendOkHttpResponse(String address, RequestBody requestBody, okhttp3.Callback callback){
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(address).post(requestBody).build();
+        client.newCall(request).enqueue(callback);
+    }
+
 }

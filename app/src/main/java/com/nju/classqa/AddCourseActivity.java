@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.nju.classqa.vo.Course;
 
 public class AddCourseActivity extends Activity {
     EditText inputText;

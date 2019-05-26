@@ -10,13 +10,7 @@ public class User {
         String serial = null;
 
         String m_szDevIDShort = "35" +
-                Build.BOARD.length()%10+ Build.BRAND.length()%10 +
-
-                Build.CPU_ABI.length()%10 + Build.DEVICE.length()%10 +
-
-                Build.DISPLAY.length()%10 + Build.HOST.length()%10 +
-
-                Build.ID.length()%10 + Build.MANUFACTURER.length()%10 +
+                Build.MANUFACTURER.length()%10 +
 
                 Build.MODEL.length()%10 + Build.PRODUCT.length()%10 +
 

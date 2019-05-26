@@ -1,4 +1,4 @@
-package com.nju.classqa;
+package com.nju.classqa.vo;
 
 import java.io.Serializable;
 

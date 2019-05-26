@@ -1,4 +1,4 @@
-package com.nju.classqa;
+package com.nju.classqa.vo;
 
 public class Answer {
 
