@@ -33,25 +33,17 @@
         android:layout_weight="1"
         android:background="@color/white"/>
 
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="17dp"
         android:background="@color/white"
-        >
 
-        <android.support.v7.widget.AppCompatImageButton
-            android:id="@+id/addCourse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_add_attachment"/>
-
-    </FrameLayout>
+        android:backgroundTintMode="add"
+        android:src="@drawable/add_course"
+        app:srcCompat="@color/dialog_divider" />
 
 
 </LinearLayout>

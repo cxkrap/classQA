@@ -1,31 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/capital"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_above="@id/student"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
         android:padding="60dp"
+        android:background="@color/green"
         android:text="ClassQA"
+        android:textAlignment="center"
         android:textSize="50dp"/>
-    <Button
-        android:id="@+id/student"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:padding="40dp"
-        android:text="学生"/>
 
-    <Button
-        android:id="@+id/teacher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/student"
-        android:padding="40dp"
-        android:text="教师"/>
-</RelativeLayout>
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/capital"
+        android:layout_margin="30dp"
+        android:background="@color/white"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/student"
+            android:layout_gravity="center"
+            android:textSize="100dp"
+            android:padding="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:testSize="30dp"
+            android:background="@drawable/student"
+            />
+
+
+        <Button
+            android:id="@+id/teacher"
+
+            android:layout_gravity="center"
+            android:textSize="100dp"
+            android:padding="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:testSize="30dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/teacher"/>
+
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+</android.support.v7.widget.LinearLayoutCompat>

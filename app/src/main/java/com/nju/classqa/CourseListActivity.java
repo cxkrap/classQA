@@ -3,6 +3,7 @@ package com.nju.classqa;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class CourseListActivity extends Activity  {
     private List<Course>courseList=new ArrayList<>();
-    private Button addCourse;
+    private FloatingActionButton addCourse;
     private RecyclerView courseRecyclerView;
     private CourseAdapter adapter;
     @Override
@@ -21,7 +22,7 @@ public class CourseListActivity extends Activity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.courselist);
         initCourse();
-        addCourse=(Button)findViewById(R.id.addCourse);
+        addCourse=(FloatingActionButton)findViewById(R.id.addCourse);
         courseRecyclerView=(RecyclerView)findViewById(R.id.course_recycler_view);
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         courseRecyclerView.setLayoutManager(layoutManager);
