@@ -1,38 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#d8e0e8">
+    android:background="@color/white"
+    tools:ignore="NamespaceTypo">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/green">
 
         <TextView
-            android:id="@+id/courseListCapital"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textSize="50dp"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="#fff"
-            android:text="我的课程" />
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:text="Course"
+            android:fontFamily="sans-serif-black"
+            android:textSize="20sp"
+            android:background="@color/green"/>
 
-    </LinearLayout>
+
+    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/course_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:background="@color/white"/>
 
-    <Button
-        android:id="@+id/addCourse"
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="添加课程"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:background="@color/white"
+        >
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/addCourse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_add_attachment"/>
+
+    </FrameLayout>
+
 
 </LinearLayout>
