@@ -7,13 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+
+
 import java.util.List;
 
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder>{
 
     private List<Course> courseList;
-
+    private DialogListStyle style;
+    void setStyle(DialogListStyle dialogStyle) {
+        this.style = dialogStyle;
+    }
     static class ViewHolder extends RecyclerView.ViewHolder{
         TextView course;
         TextView courseteacher;
