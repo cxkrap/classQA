@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CourseQuesActivity extends Activity {
     private List<Question> questionList=new ArrayList<>();
-    private Button send;
+    private Button sendQuestion;
     private RecyclerView questionRecyclerView;
     private QuestionAdapter adapter;
 
@@ -20,14 +20,14 @@ public class CourseQuesActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questionlist);
-        initCourse();
-        send=(Button)findViewById(R.id.send);
+        initQuestion();
+        sendQuestion=(Button)findViewById(R.id.send_question);
         questionRecyclerView=(RecyclerView)findViewById(R.id.question_recycler_view);
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         questionRecyclerView.setLayoutManager(layoutManager);
         adapter=new QuestionAdapter(questionList);
         questionRecyclerView.setAdapter(adapter);
-        send.setOnClickListener(new View.OnClickListener() {
+        sendQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -36,7 +36,7 @@ public class CourseQuesActivity extends Activity {
 
     }
 
-    private void initCourse(){
+    private void initQuestion(){
         questionList.add(new Question("沙雕"));
         questionList.add(new Question("沙雕"));
         questionList.add(new Question("沙雕"));
