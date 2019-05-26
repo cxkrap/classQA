@@ -11,7 +11,7 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseListActivity extends Activity implements View.OnClickListener {
+public class CourseListActivity extends Activity  {
     private List<Course>courseList=new ArrayList<>();
     private Button addCourse;
     private RecyclerView courseRecyclerView;
@@ -35,18 +35,7 @@ public class CourseListActivity extends Activity implements View.OnClickListener
         });
 
     }
-    @Override
-    public void onClick(View view) {
-        int id=view.getId();
-        switch (id){
-            default:
-                Intent intent=new Intent();
-                intent.setClass(CourseListActivity.this,CourseQuesActivity.class);
-                startActivityForResult(intent,0);
-                break;
-        }
 
-    }
     private void initCourse(){
         courseList.add(new Course("计算系统基础","王浩然"));
         courseList.add(new Course("离散数学","马晓星"));

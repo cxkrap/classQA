@@ -1,5 +1,6 @@
 package com.nju.classqa;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder>{
 
@@ -27,9 +29,19 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType){
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.course_item,parent,false);
-        return new ViewHolder(view);
+        final ViewHolder holder=new ViewHolder(view);
+        holder.course.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position=holder.getAdapterPosition();
+                Course course=courseList.get(position);
+                Intent intent=new Intent(parent.getContext(),CourseQuesActivity.class);
+                parent.getContext().startActivity(intent);
+            }
+        });
+        return holder;
     }
 
     @Override

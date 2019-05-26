@@ -1,5 +1,6 @@
 package com.nju.classqa;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,16 +27,24 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     }
 
     @Override
-    public QuestionAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public QuestionAdapter.ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType){
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.question_item,parent,false);
-        return new QuestionAdapter.ViewHolder(view);
+        final QuestionAdapter.ViewHolder holder=new QuestionAdapter.ViewHolder(view);
+        holder.questionContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(parent.getContext(),QAActivity.class);
+                parent.getContext().startActivity(intent);
+            }
+        });
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(QuestionAdapter.ViewHolder holder, int position){
         Question question= questionList.get(position);
         holder.questionContent.setText(question.getContent());
-        holder.questionNum.setText(question.getNum());
+        holder.questionNum.setText(question.getNum()+"");
     }
 
     @Override
