@@ -77,7 +77,7 @@ public class CourseQuesActivity extends Activity {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("course_id", courseId);
             RequestBody requestBody = RequestBody.create(JSON, jsonObject.toString());
-            HttpUtil.sendOkHttpResponse("http://120.77.169.189:8080/api/", requestBody, new Callback() {
+            HttpUtil.sendOkHttpResponse("http://120.77.169.189:8080/api/question/" + courseId, requestBody, new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     //通过runOnUiThread()方法回到主线程处理逻辑
@@ -123,7 +123,7 @@ public class CourseQuesActivity extends Activity {
             jsonObject.put("content", content);
             jsonObject.put("course_id", courseId);
             RequestBody requestBody = RequestBody.create(JSON, jsonObject.toString());
-            HttpUtil.sendOkHttpResponse("http://120.77.169.189:8080/api/", requestBody, new Callback() {
+            HttpUtil.sendOkHttpResponse("http://120.77.169.189:8080/api/qusetion/add", requestBody, new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     //通过runOnUiThread()方法回到主线程处理逻辑
