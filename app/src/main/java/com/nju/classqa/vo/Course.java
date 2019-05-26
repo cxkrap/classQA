@@ -13,6 +13,10 @@ public class Course implements Serializable {
     private int num;
 
 
+    public Course(){
+        super();
+    }
+
     public Course(String name){
         this.name=name;
     }
@@ -40,11 +44,23 @@ public class Course implements Serializable {
         return teacher;
     }
 
+    public void setTeacher(String teacher){
+        this.teacher=teacher;
+    }
+
     public int getNum(){
         return num;
     }
 
+    public void setNum(int num){
+        this.num=num;
+    }
+
     public int getId(){
         return id;
+    }
+
+    public void setId(int id){
+        this.id=id;
     }
 }

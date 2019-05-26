@@ -40,29 +40,32 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
                 int position=holder.getAdapterPosition();
                 Question question=questionList.get(position);
                 holder.questionChecked.setText("已读");
-                holder.questionChecked.setTextColor(R.color.colorPrimary);
+                holder.questionChecked.setTextColor(holder.questionChecked.getResources().getColor(R.color.warm_grey));
                 //Todo
                 Intent intent=new Intent(parent.getContext(),QAActivity.class);
                 intent.putExtra("questionId",question.getId());
+                intent.putExtra("questionContent",question.getContent());
                 parent.getContext().startActivity(intent);
             }
         });
         holder.questionNum.setOnClickListener(new View.OnClickListener() {
+            private boolean hasClicked=false;
             @Override
             public void onClick(View view) {
                 //Todo
                 int position=holder.getAdapterPosition();
                 Question question=questionList.get(position);
-                if(!question.getHasAddNum()){
+                if(!hasClicked){
                     question.addNum();
+                    hasClicked=true;
                     holder.questionNum.setText(question.getNum()+"人有疑惑");
-                    holder.questionNum.setTextColor(R.color.colorAccent);
+                    holder.questionNum.setTextColor(holder.questionNum.getResources().getColor(R.color.red));
                     holder.questionChecked.setText("已读");
-                    holder.questionChecked.setTextColor(R.color.colorPrimary);
-                    question.setHasAddNum(true);
+                    holder.questionChecked.setTextColor(holder.questionChecked.getResources().getColor(R.color.warm_grey));
                 }
                 else {
-                    holder.questionNum.setTextColor(R.color.colorPrimaryDark);
+                    holder.questionNum.setTextColor(holder.questionNum.getResources().getColor(R.color.colorPrimary));
+
                 }
             }
         });
@@ -70,7 +73,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
             @Override
             public void onClick(View view) {
                 holder.questionChecked.setText("已读");
-                holder.questionChecked.setTextColor(R.color.colorPrimary);
+                holder.questionChecked.setTextColor(holder.questionChecked.getResources().getColor(R.color.warm_grey));
             }
         });
         return holder;

@@ -7,9 +7,9 @@
 
     <TextView
         android:id="@+id/capital"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="1dp"
         android:layout_gravity="center"
         android:layout_centerHorizontal="true"
         android:padding="60dp"

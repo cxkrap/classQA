@@ -48,7 +48,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
                 if(!answer.getHasAddNum()){
                     answer.addNum();
                     holder.answerNum.setText(answer.getNum()+"人认可");
-                    holder.answerNum.setTextColor(R.color.colorPrimaryDark);
+                    holder.answerNum.setTextColor(holder.answerNum.getResources().getColor(R.color.green));
                     answer.setHasAddNum(true);
                 }
 

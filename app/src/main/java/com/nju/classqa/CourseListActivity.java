@@ -9,10 +9,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
+import com.nju.classqa.util.HttpUtil;
+import com.nju.classqa.vo.Answer;
 import com.nju.classqa.vo.Course;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class CourseListActivity extends Activity  {
     private List<Course>courseList=new ArrayList<>();
@@ -48,11 +61,17 @@ public class CourseListActivity extends Activity  {
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-// TODO Auto-generated method stub
+        // TODO Auto-generated method stub
         switch (requestCode) {
             case 0:
                 if(resultCode==RESULT_OK){
                     Course course=(Course) data.getSerializableExtra("course");
+                    String name=course.getName();
+                    try{
+                        course=addCourse(Integer.parseInt(User.getUniquePsuedoID()),name);
+                    }catch (Exception e){
+
+                    }
                     courseList.add(0,course);
                     adapter.notifyItemInserted(0);
                     courseRecyclerView.scrollToPosition(0);
@@ -65,12 +84,14 @@ public class CourseListActivity extends Activity  {
     }
 
     private void initCourse(){
-        if(identity==0){
-            //Todo
-        }
-        else {
+        try{
+            courseList=getCourseListByUserId(Integer.parseInt(User.getUniquePsuedoID()));
+        }catch (Exception e){
 
         }
+
+        if(courseList.size()>0)
+            return;
         courseList.add(new Course("计算系统基础","王浩然",10));
         courseList.add(new Course("离散数学","马晓星",1));
         courseList.add(new Course("软件工程与计算I","刘钦"));
@@ -80,4 +101,92 @@ public class CourseListActivity extends Activity  {
         courseList.add(new Course("软件工程与计算II","刘钦"));
         courseList.add(new Course("互联网计算","刘峰"));
     }
+
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+    private List<Course> getCourseListByUserId(int userId){
+        List<Course> newCourseList = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("user_id", userId);
+            RequestBody requestBody = RequestBody.create(JSON, jsonObject.toString());
+            HttpUtil.sendOkHttpResponse("http://120.77.169.189:8080/api/", requestBody, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    //通过runOnUiThread()方法回到主线程处理逻辑
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getBaseContext(), "加载失败",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String responseBody = response.body().string();
+                    try {
+                        JSONObject jsonObjectResponse = new JSONObject(responseBody);
+                        JSONArray courses = jsonObjectResponse.getJSONArray("content");
+                        for(int i = 0; i < courses.length(); i ++){
+                            JSONObject courseObject = courses.getJSONObject(i);
+                            Course course=new Course();
+                            course.setId(courseObject.getInt("id"));
+                            course.setNum(courseObject.getInt("unable_num"));
+                            course.setName(courseObject.getString("name"));
+                            course.setTeacher(courseObject.getString("teacher"));
+                            newCourseList.add(course);
+                        }
+
+                    } catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return newCourseList;
+    }
+
+    public Course addCourse(int userId,String name){
+        Course course = new Course();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("user_id", userId);
+            jsonObject.put("name",name);
+            RequestBody requestBody = RequestBody.create(JSON, jsonObject.toString());
+            HttpUtil.sendOkHttpResponse("http://120.77.169.189:8080/api/", requestBody, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    //通过runOnUiThread()方法回到主线程处理逻辑
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getBaseContext(), "加载失败",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String responseBody = response.body().string();
+                    try {
+                        JSONObject courseObject = new JSONObject(responseBody);
+                        course.setId(courseObject.getInt("id"));
+                        course.setNum(courseObject.getInt("unable_num"));
+                        course.setName(courseObject.getString("name"));
+                        course.setTeacher(courseObject.getString("teacher"));
+                    } catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return course;
+    }
+
+
 }
