@@ -1,9 +1,15 @@
 package com.nju.classqa;
 
 public class Course {
+
+    private int id;
+
     private String name;
 
     private String teacher;
+
+    private int num;
+
 
     public Course(String name){
         this.name=name;
@@ -12,6 +18,12 @@ public class Course {
     public Course(String name,String teacher){
         this.name=name;
         this.teacher=teacher;
+    }
+
+    public Course(String name,String teacher,int num){
+        this.name=name;
+        this.teacher=teacher;
+        this.num=num;
     }
 
     public void setName(String name){
@@ -24,5 +36,13 @@ public class Course {
 
     public String getTeacher(){
         return teacher;
+    }
+
+    public int getNum(){
+        return num;
+    }
+
+    public int getId(){
+        return id;
     }
 }
