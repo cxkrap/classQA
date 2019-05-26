@@ -1,4 +1,4 @@
-package com.nju.classqa;
+package com.nju.classqa.util;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

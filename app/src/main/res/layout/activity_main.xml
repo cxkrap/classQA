@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <!--<com.getbase.floatingactionbutton.FloatingActionButton-->
-        <!--android:id="@+id/pink_icon"-->
-        <!--fab:fab_colorNormal="@color/pink"-->
-        <!--fab:fab_colorPressed="@color/pink_pressed"-->
-        <!--fab:fab_icon="@drawable/ic_fab_star"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--tools:layout_editor_absoluteX="66dp"-->
-        <!--tools:layout_editor_absoluteY="62dp" />-->
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/capital"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerInParent="true"
+        android:layout_above="@id/student"
+        android:padding="60dp"
+        android:text="ClassQA"
+        android:textSize="50dp"/>
+    <Button
+        android:id="@+id/student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="40dp"
+        android:text="学生"/>
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/teacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/student"
+        android:padding="40dp"
+        android:text="教师"/>
+</RelativeLayout>
