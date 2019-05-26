@@ -25,6 +25,9 @@
         <activity android:name=".QAActivity">
 
         </activity>
+        <activity android:name=".AddCourseActivity">
+
+        </activity>
     </application>
 
 </manifest>

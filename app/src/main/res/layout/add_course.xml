@@ -6,28 +6,19 @@
     android:background="#d8e0e8">
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/questionList"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:textAlignment="center"
             android:textSize="50dp"
             android:text="添加课程" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center">
-
         <EditText
-            android:id="@+id/input_question"
+            android:id="@+id/input_course"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -35,12 +26,13 @@
             android:hint="输入课程名" />
 
         <Button
-            android:id="@+id/send_question"
+            android:id="@+id/confirm_addcourse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="确认添加"/>
 
     </LinearLayout>
+
 
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,17 +35,32 @@ public class CourseListActivity extends Activity  {
         addCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(identity==0){
-                    //Todo
-                }
-                else {
-
-                }
+                //Todo
+                Intent intent=new Intent();
+                intent.putExtra("identity",identity);
+                intent.setClass(CourseListActivity.this,AddCourseActivity.class);
+                startActivityForResult(intent,0);
             }
         });
 
     }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+// TODO Auto-generated method stub
+        switch (requestCode) {
+            case 0:
+                if(resultCode==RESULT_OK){
+                    Course course=(Course) data.getSerializableExtra("course");
+                    courseList.add(0,course);
+                    adapter.notifyItemInserted(0);
+                    courseRecyclerView.scrollToPosition(0);
+                    Toast.makeText(this, "成功添加课程"+course.getName(), Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+                break;
+        }
+    }
 
     private void initCourse(){
         if(identity==0){

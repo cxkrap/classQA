@@ -1,6 +1,8 @@
 package com.nju.classqa;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable {
 
     private int id;
 
