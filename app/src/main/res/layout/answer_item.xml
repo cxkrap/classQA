@@ -9,6 +9,7 @@
     android:padding="4dp">
 
         <TextView
+            android:layout_margin="9dp"
             android:id="@+id/answer_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,6 +20,7 @@
             android:layout_marginBottom="10dp"/>
 
         <TextView
+            android:layout_margin="9dp"
             android:id="@+id/answer_num"
             android:clickable="true"
             android:focusable="true"
