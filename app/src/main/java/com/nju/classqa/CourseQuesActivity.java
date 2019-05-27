@@ -126,7 +126,8 @@ public class CourseQuesActivity extends Activity {
                 public void onResponse(Call call, Response response) throws IOException {
                     String responseBody = response.body().string();
                     try {
-                        JSONObject jsonObjectResponse = new JSONObject(responseBody);
+                        JSONArray jsonArray = new JSONArray(responseBody);
+                        JSONObject jsonObjectResponse = jsonArray.getJSONObject(0);
                         JSONArray questions = jsonObjectResponse.getJSONArray("content");
                         for(int i = 0; i < questions.length(); i ++){
                             JSONObject questionObject = questions.getJSONObject(i);
@@ -172,7 +173,8 @@ public class CourseQuesActivity extends Activity {
                 public void onResponse(Call call, Response response) throws IOException {
                     String responseBody = response.body().string();
                     try {
-                        JSONObject questionObject = new JSONObject(responseBody);
+                        JSONArray jsonArray = new JSONArray(responseBody);
+                        JSONObject questionObject = jsonArray.getJSONObject(0);
                         question.setId(questionObject.getInt("id"));
                         question.setNum(questionObject.getInt("unable_num"));
                         question.setContent(questionObject.getString("content"));
