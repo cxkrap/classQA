@@ -56,9 +56,9 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
                 int position=holder.getAdapterPosition();
                 Question question=questionList.get(position);
                 if(!hasClicked){
-                    question.addNum();
+                    question.addUnableNum();
                     hasClicked=true;
-                    holder.questionNum.setText(question.getNum()+"人有疑惑");
+                    holder.questionNum.setText(question.getUnableNum()+"人有疑惑");
                     holder.questionNum.setTextColor(holder.questionNum.getResources().getColor(R.color.red));
                     holder.questionChecked.setText("已读");
                     holder.questionChecked.setTextColor(holder.questionChecked.getResources().getColor(R.color.warm_grey));
@@ -83,7 +83,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     public void onBindViewHolder(QuestionAdapter.ViewHolder holder, int position){
         Question question= questionList.get(position);
         holder.questionContent.setText("        "+question.getContent());
-        holder.questionNum.setText(question.getNum()+"人有疑惑");
+        holder.questionNum.setText(question.getUnableNum()+"人有疑惑");
     }
 
     @Override

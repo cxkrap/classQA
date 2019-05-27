@@ -47,7 +47,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
                 Answer answer=answerList.get(position);
                 if(!answer.getHasAddNum()){
                     answer.addNum();
-                    holder.answerNum.setText(answer.getNum()+"人认可");
+                    holder.answerNum.setText(answer.getThumbNum()+"人认可");
                     holder.answerNum.setTextColor(holder.answerNum.getResources().getColor(R.color.green));
                     answer.setHasAddNum(true);
                 }
@@ -61,7 +61,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
     public void onBindViewHolder(AnswerAdapter.ViewHolder holder, int position){
         Answer answer= answerList.get(position);
         holder.answerContent.setText(answer.getContent());
-        holder.answerNum.setText(answer.getNum()+"人认可");
+        holder.answerNum.setText(answer.getThumbNum()+"人认可");
     }
 
     @Override
