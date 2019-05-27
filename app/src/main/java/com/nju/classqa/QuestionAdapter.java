@@ -82,7 +82,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     @Override
     public void onBindViewHolder(QuestionAdapter.ViewHolder holder, int position){
         Question question= questionList.get(position);
-        holder.questionContent.setText(question.getContent());
+        holder.questionContent.setText("        "+question.getContent());
         holder.questionNum.setText(question.getNum()+"人有疑惑");
     }
 
