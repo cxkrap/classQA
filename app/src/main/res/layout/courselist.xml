@@ -42,7 +42,7 @@
         android:layout_margin="17dp"
         android:background="@color/white"
         android:backgroundTintMode="add"
-        android:src="@drawable/add_course_ridio"
+        android:src="@drawable/add"
         android:scaleType="center"
         app:srcCompat="@color/dialog_divider"
         />
