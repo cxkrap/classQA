@@ -3,7 +3,7 @@ package com.nju.classqa.vo;
 public class Question {
     private int id;
     private String content;
-    private int num;
+    private int unableNum;
 
     public String getContent(){
         return content;
@@ -13,12 +13,12 @@ public class Question {
         this.content = content;
     }
 
-    public int getNum(){
-        return num;
+    public int getUnableNum(){
+        return unableNum;
     }
 
-    public void setNum(int num) {
-        this.num = num;
+    public void setUnableNum(int unableNum) {
+        this.unableNum = unableNum;
     }
 
     public int getId(){
@@ -29,8 +29,8 @@ public class Question {
         this.id = id;
     }
 
-    public void addNum(){
-        num++;
+    public void addUnableNum(){
+        unableNum++;
     }
 
 }

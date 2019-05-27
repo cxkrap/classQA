@@ -4,7 +4,7 @@ public class Answer {
 
     private int id;
     private String content;
-    private int num;
+    private int thumbNum;
     private boolean hasAddNum=false;
 
     public Answer(){
@@ -15,9 +15,9 @@ public class Answer {
         this.content=content;
     }
 
-    public Answer(String content,int num){
+    public Answer(String content,int thumbNum){
         this.content=content;
-        this.num=num;
+        this.thumbNum=thumbNum;
     }
 
     public  String getContent(){
@@ -28,12 +28,12 @@ public class Answer {
         this.content=content;
     }
 
-    public int getNum(){
-        return num;
+    public int getThumbNum(){
+        return thumbNum;
     }
 
-    public void setNum(int num){
-        this.num=num;
+    public void setThumbNum(int thumbNum){
+        this.thumbNum=thumbNum;
     }
 
     public int getId(){
@@ -45,7 +45,7 @@ public class Answer {
     }
 
     public void addNum(){
-        num++;
+        thumbNum++;
     }
 
     public boolean getHasAddNum(){

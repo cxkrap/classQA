@@ -100,7 +100,7 @@ public class QAActivity extends Activity {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("question_id", questionId);
             RequestBody requestBody = RequestBody.create(JSON, jsonObject.toString());
-            HttpUtil.sendOkHttpResponse("http://120.77.169.189:8080/api/answer/" + questionId, requestBody, new Callback() {
+            HttpUtil.sendOkHttpRequest("http://120.77.169.189:8080/api/answer?questionId=" + questionId, new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     //通过runOnUiThread()方法回到主线程处理逻辑
@@ -116,13 +116,14 @@ public class QAActivity extends Activity {
                 public void onResponse(Call call, Response response) throws IOException {
                     String responseBody = response.body().string();
                     try {
-                        JSONObject jsonObjectResponse = new JSONObject(responseBody);
+                        JSONArray jsonArray = new JSONArray(responseBody);
+                        JSONObject jsonObjectResponse = jsonArray.getJSONObject(0);
                         JSONArray answers = jsonObjectResponse.getJSONArray("content");
                         for(int i = 0; i < answers.length(); i ++){
                             JSONObject answerObject = answers.getJSONObject(i);
                             Answer answer=new Answer();
                             answer.setId(answerObject.getInt("id"));
-                            answer.setNum(answerObject.getInt("unable_num"));
+                            answer.setThumbNum(answerObject.getInt("thumbNum"));
                             answer.setContent(answerObject.getString("content"));
                             newAnswerList.add(answer);
                         }
@@ -142,11 +143,11 @@ public class QAActivity extends Activity {
         Answer answer = new Answer();
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("user_id", userId);
+            jsonObject.put("userId", userId);
             jsonObject.put("content", content);
-            jsonObject.put("course_id", questionId);
+            jsonObject.put("courseId", questionId);
             RequestBody requestBody = RequestBody.create(JSON, jsonObject.toString());
-            HttpUtil.sendOkHttpResponse("http://120.77.169.189:8080/api/", requestBody, new Callback() {
+            HttpUtil.sendOkHttpResponse("http://120.77.169.189:8080/api/answer/add", requestBody, new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     //通过runOnUiThread()方法回到主线程处理逻辑
@@ -162,9 +163,10 @@ public class QAActivity extends Activity {
                 public void onResponse(Call call, Response response) throws IOException {
                     String responseBody = response.body().string();
                     try {
-                        JSONObject answerObject = new JSONObject(responseBody);
+                        JSONArray jsonArray = new JSONArray(responseBody);
+                        JSONObject answerObject = jsonArray.getJSONObject(0);
                         answer.setId(answerObject.getInt("id"));
-                        answer.setNum(answerObject.getInt("unable_num"));
+                        answer.setThumbNum(answerObject.getInt("unableNum"));
                         answer.setContent(answerObject.getString("content"));
                     } catch (JSONException e){
                         e.printStackTrace();
@@ -176,7 +178,5 @@ public class QAActivity extends Activity {
         }
         return answer;
     }
-
-
 
 }
