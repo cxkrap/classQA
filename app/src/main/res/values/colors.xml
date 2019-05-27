@@ -13,6 +13,7 @@
     <color name="blue_semi_transparent">#805677fc</color>
     <color name="blue_semi_transparent_pressed">#80738ffe</color>
     <color name="cornflower_blue_dark">#303F9F</color>
+    <color name="light_green">#009966</color>
     <color name="cornflower_blue_darkest">#2d3a93</color>
     <color name="gray">#ebebeb</color>
     <color name="gray_light">#e8e8e8</color>

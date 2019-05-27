@@ -15,8 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textSize="32dp"
-            android:background="@color/green_dark"
+            android:textSize="50dp"
+            android:background="@color/light_green"
             android:textColor="#fff"
             android:text="Answer" />
 
@@ -24,8 +24,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:padding="12dp"
+        android:layout_margin="9dp"
         android:layout_height="wrap_content"
-        android:background="@color/transparent">
+        android:background="@drawable/answer_corner"
+        >
 
         <TextView
             android:id="@+id/aimed_question"
@@ -36,8 +39,8 @@
             android:lineSpacingMultiplier="1.2"
             android:scrollbars="vertical"
             android:textSize="20dp"
-            android:background="@color/green"
-            android:textColor="@color/white"
+            android:background="@color/transparent"
+            android:textColor="@color/gray_darkest"
             android:text="Questions：" />
 
     </LinearLayout>
@@ -52,19 +55,21 @@
         android:padding="5dp"
         android:paddingStart="2dp"/>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:background="@color/white"
+        >
 
         <EditText
             android:id="@+id/input_answer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/transparent"
-            android:hint="Type your answer"
+            android:hint="Type your question"
             android:maxLines="2"/>
+
 
         <Button
             android:id="@+id/send_answer"
