@@ -31,6 +31,7 @@
         android:background="@color/transparent">
 
         <TextView
+            android:layout_margin="9dp"
             android:id="@+id/question_num"
             android:clickable="true"
             android:focusable="true"
@@ -41,6 +42,7 @@
             android:text="0人有疑惑"/>
 
         <TextView
+            android:layout_margin="9dp"
             android:id="@+id/isChecked"
             android:clickable="true"
             android:focusable="true"
