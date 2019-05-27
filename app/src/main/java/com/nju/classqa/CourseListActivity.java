@@ -66,7 +66,7 @@ public class CourseListActivity extends Activity  {
             case 0:
                 if(resultCode==RESULT_OK){
                     Course course=(Course) data.getSerializableExtra("course");
-                    String name=course.getName();
+                    String name=course.getCourseName();
                     try{
                         course=addCourse(Integer.parseInt(User.getUniquePsuedoID()),name);
                     }catch (Exception e){
@@ -75,7 +75,7 @@ public class CourseListActivity extends Activity  {
                     courseList.add(0,course);
                     adapter.notifyItemInserted(0);
                     courseRecyclerView.scrollToPosition(0);
-                    Toast.makeText(this, "成功添加课程"+course.getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "成功添加课程"+course.getCourseName(), Toast.LENGTH_SHORT).show();
                 }
                 break;
             default:
@@ -107,10 +107,7 @@ public class CourseListActivity extends Activity  {
     private List<Course> getCourseListByUserId(int userId){
         List<Course> newCourseList = new ArrayList<>();
         try {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("user_id", userId);
-            RequestBody requestBody = RequestBody.create(JSON, jsonObject.toString());
-            HttpUtil.sendOkHttpResponse("http://120.77.169.189:8080/api/", requestBody, new Callback() {
+            HttpUtil.sendOkHttpRequest("http://120.77.169.189:8080/api/course?userId="+userId, new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     //通过runOnUiThread()方法回到主线程处理逻辑
@@ -132,9 +129,9 @@ public class CourseListActivity extends Activity  {
                             JSONObject courseObject = courses.getJSONObject(i);
                             Course course=new Course();
                             course.setId(courseObject.getInt("id"));
-                            course.setNum(courseObject.getInt("unable_num"));
-                            course.setName(courseObject.getString("name"));
-                            course.setTeacher(courseObject.getString("teacher"));
+                            course.setNotReadNum(courseObject.getInt("notReadNum"));
+                            course.setCourseName(courseObject.getString("courseName"));
+                            course.setTeacherName(courseObject.getString("teacherName"));
                             newCourseList.add(course);
                         }
 
@@ -153,10 +150,10 @@ public class CourseListActivity extends Activity  {
         Course course = new Course();
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("user_id", userId);
+            jsonObject.put("userId", userId);
             jsonObject.put("name",name);
             RequestBody requestBody = RequestBody.create(JSON, jsonObject.toString());
-            HttpUtil.sendOkHttpResponse("http://120.77.169.189:8080/api/", requestBody, new Callback() {
+            HttpUtil.sendOkHttpResponse("http://120.77.169.189:8080/api/course/add", requestBody, new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     //通过runOnUiThread()方法回到主线程处理逻辑
@@ -174,9 +171,9 @@ public class CourseListActivity extends Activity  {
                     try {
                         JSONObject courseObject = new JSONObject(responseBody);
                         course.setId(courseObject.getInt("id"));
-                        course.setNum(courseObject.getInt("unable_num"));
-                        course.setName(courseObject.getString("name"));
-                        course.setTeacher(courseObject.getString("teacher"));
+                        course.setNotReadNum(courseObject.getInt("notReadNum"));
+                        course.setCourseName(courseObject.getString("courseName"));
+                        course.setTeacherName(courseObject.getString("teacherName"));
                     } catch (JSONException e){
                         e.printStackTrace();
                     }

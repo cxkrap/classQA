@@ -6,54 +6,54 @@ public class Course implements Serializable {
 
     private int id;
 
-    private String name;
+    private String courseName;
 
-    private String teacher;
+    private String teacherName;
 
-    private int num;
+    private int notReadNum;
 
 
     public Course(){
         super();
     }
 
-    public Course(String name){
-        this.name=name;
+    public Course(String courseName){
+        this.courseName=courseName;
     }
 
-    public Course(String name,String teacher){
-        this.name=name;
-        this.teacher=teacher;
+    public Course(String courseName,String teacherName){
+        this.courseName=courseName;
+        this.teacherName=teacherName;
     }
 
-    public Course(String name,String teacher,int num){
-        this.name=name;
-        this.teacher=teacher;
-        this.num=num;
+    public Course(String courseName,String teacherName,int notReadNum){
+        this.courseName=courseName;
+        this.teacherName=teacherName;
+        this.notReadNum=notReadNum;
     }
 
-    public void setName(String name){
-        this.name=name;
+    public void setCourseName(String courseName){
+        this.courseName=courseName;
     }
 
-    public String getName(){
-        return name;
+    public String getCourseName(){
+        return courseName;
     }
 
-    public String getTeacher(){
-        return teacher;
+    public String getTeacherName(){
+        return teacherName;
     }
 
-    public void setTeacher(String teacher){
-        this.teacher=teacher;
+    public void setTeacherName(String teacherName){
+        this.teacherName=teacherName;
     }
 
-    public int getNum(){
-        return num;
+    public int getNotReadNum(){
+        return notReadNum;
     }
 
-    public void setNum(int num){
-        this.num=num;
+    public void setNotReadNum(int notReadNum){
+        this.notReadNum=notReadNum;
     }
 
     public int getId(){
