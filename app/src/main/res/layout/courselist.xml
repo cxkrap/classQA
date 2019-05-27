@@ -38,13 +38,14 @@
         android:id="@+id/addCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="17dp" 
-        android:background="@color/white"
-
+        android:layout_gravity="center"
+        android:layout_margin="17dp"
+        android:background="@color/transparent"
         android:backgroundTintMode="add"
         android:src="@drawable/add_course"
-        app:srcCompat="@color/dialog_divider" />
+        android:scaleType="center"
+        app:srcCompat="@color/dialog_divider"
+        />
 
 
 </LinearLayout>

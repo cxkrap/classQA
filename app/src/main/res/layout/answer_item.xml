@@ -3,29 +3,34 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_margin="3dp"
-    android:background="@color/white_two">
+    android:layout_margin="10dp"
+    android:background="@drawable/corner"
+    android:padding="9dp">
 
-    <TextView
-        android:id="@+id/answer_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@color/white_two"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_margin="9dp"
+            android:id="@+id/answer_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:textColor="@color/brown"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"/>
 
-    <TextView
-        android:id="@+id/answer_num"
-        android:clickable="true"
-        android:focusable="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white_two"
-        android:textColor="@color/colorPrimaryDark"
-        android:minWidth="20dp"
-        android:textSize="15dp"/>
+        <TextView
+            android:layout_margin="9dp"
+            android:id="@+id/answer_num"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:textColor="@color/gray_dark"
+            android:minWidth="20dp"
+            android:fontFeatureSettings="@string/font_fontFamily_medium"
+            android:textSize="15dp"/>
+
+
 
 </LinearLayout>
