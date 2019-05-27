@@ -42,7 +42,7 @@
         android:layout_margin="17dp"
         android:background="@color/transparent"
         android:backgroundTintMode="add"
-        android:src="@drawable/Add"
+        android:src="@drawable/add"
         android:scaleType="center"
         app:srcCompat="@color/dialog_divider"
         />

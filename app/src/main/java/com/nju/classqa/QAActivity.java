@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +50,7 @@ public class QAActivity extends Activity {
         questionContent=inintent.getStringExtra("questionContent");
         aimed_Ques.setText("Question: "+questionContent);
         inputText=(EditText)findViewById(R.id.input_answer);
+        aimed_Ques.setMovementMethod(ScrollingMovementMethod.getInstance());
         initAnswer();
         sendAnswer=(Button)findViewById(R.id.send_answer);
         answerRecyclerView=(RecyclerView)findViewById(R.id.answer_recycler_view);
