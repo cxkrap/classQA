@@ -70,9 +70,8 @@
             android:id="@+id/send_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/green"
-            android:textColor="@color/white"
-            android:text="send"/>
+            android:background="@drawable/ic_send"
+            />
 
     </LinearLayout>
 

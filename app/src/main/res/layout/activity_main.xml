@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <TextView
         android:id="@+id/capital"
@@ -25,18 +26,8 @@
         android:layout_margin="30dp"
         android:background="@color/white"
         android:layout_gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/student"
-            android:layout_gravity="center"
-            android:textSize="100dp"
-            android:padding="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/student"
-            />
 
 
         <Button
@@ -49,8 +40,19 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="20dp"
-            android:background="@drawable/teacher"/>
+            android:background="@drawable/teacher"
+            />
 
+        <Button
+            android:id="@+id/student"
+            android:layout_gravity="center"
+            android:textSize="100dp"
+            android:padding="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/student"
+            />
 
     </android.support.v7.widget.LinearLayoutCompat>
 
