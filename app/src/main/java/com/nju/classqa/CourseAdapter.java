@@ -52,7 +52,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
                 holder.uncheckNum.setText("");
                 Intent intent=new Intent(parent.getContext(),CourseQuesActivity.class);
                 intent.putExtra("identity",identity);
-                intent.putExtra("courseName",course.getName());
+                intent.putExtra("courseName",course.getCourseName());
                 intent.putExtra("courseId",course.getId());
                 parent.getContext().startActivity(intent);
             }
@@ -70,10 +70,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder,int position){
         Course course= courseList.get(position);
-        holder.courseName.setText(course.getName());
-        holder.courseTeacher.setText(course.getTeacher());
-        if(course.getNum()!=0)
-            holder.uncheckNum.setText(course.getNum()+"");
+        holder.courseName.setText(course.getCourseName());
+        holder.courseTeacher.setText(course.getTeacherName());
+        if(course.getNotReadNum()!=0)
+            holder.uncheckNum.setText(course.getNotReadNum()+"");
     }
 
     @Override

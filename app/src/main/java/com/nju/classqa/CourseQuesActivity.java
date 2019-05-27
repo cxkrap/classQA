@@ -89,7 +89,7 @@ public class CourseQuesActivity extends Activity {
             return;
         Question question=new Question();
         question.setContent("时间短：比如这次的 Hackathon 就只有 36 小时，除去吃饭和休息，留给大家开发的时间已经不多了。\n" +
-                "强度高：开发过程中可能遇到各种各样的问题，这些问题都需要在短时间内快速解决。\n");
+                "强度高：开发过程中可能遇到各种各样的问题，这些问题都需要在短时间内快速解决，甚至还可能需要现学一门新技术新语言。总之，从 0 开始创造一个产品，时间短任务重，体力和脑力都需要爆发。\n");
         questionList.add(question);
         questionList.add(question);
         questionList.add(question);
